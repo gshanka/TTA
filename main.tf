@@ -45,6 +45,21 @@ resource "aws_instance" "image3" {
   }
 }
 
+# Install apache
+resource "aws_instance" "image3" {
+  instance_type = var.instance_type
+  key_name = var.instance_key
+  subnet_id              = aws_subnet.public_subnet.id
+  security_groups = [aws_security_group.sg.id]
+
+  user_data = <<-EOF
+  #!/bin/bash
+  echo "*** Installing apache2"
+  sudo apt update -y
+  sudo apt install apache2 -y
+  echo "*** Completed Installing apache2"
+  EOF
+
 # Create Elastic IP address
 resource "image3" {
   vpc      = true
