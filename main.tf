@@ -75,12 +75,12 @@ resource "aws_s3_bucket" "mybucket" {
   bucket = "mybucket"
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
+resource "aws_s3_bucket_server_side_encryption_configuration" {
   bucket = aws_s3_bucket.mybucket.bucket
 
   rule {
     apply_server_side_encryption_by_default {
-      kms_master_key_id = aws_kms_key.mykey.arn
+      kms_master_key_id = arn:aws:iam::162622478607:root
       sse_algorithm     = "aws:kms"
     }
   }
