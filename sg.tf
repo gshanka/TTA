@@ -1,4 +1,4 @@
-resource "aws_security_group" "sg" {
+resource "aws_security_group" "new3-security-group" {
   name        = "allow_ssh_http"
   description = "Allow ssh http inbound traffic"
   vpc_id      = aws_vpc.app_vpc.id
